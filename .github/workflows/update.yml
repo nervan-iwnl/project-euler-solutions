@@ -1,0 +1,39 @@
+name: Update README & problems
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * 1" 
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      PUBLISH_STATEMENTS: "true" 
+      REQUEST_TIMEOUT: "25"
+      MAX_RETRIES: "4"
+      BASE_SLEEP: "1.2"
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run updater
+        run: python tools/update.py
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update README / cache problem READMEs"
+          branch: ${{ github.ref_name }}
