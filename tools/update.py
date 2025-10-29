@@ -163,30 +163,58 @@ def ensure_problem_readme(n: int, prob_dir: Path) -> str:
 
 def fetch_total_problems() -> Optional[int]:
     """
-    Пытается определить общее число задач через страницу архива.
-    Стратегия: найти номер последней страницы и взять макс problem=ID.
+    Надёжно определяет общее число задач на Project Euler.
+    1) С архива /archives вытаскиваем максимальный номер страницы (из href и текста ссылок).
+    2) Открываем последнюю страницу (и вариант '?page=' и ';page=').
+    3) Берём максимальный problem=ID. Фоллбек — идём назад по страницам.
     """
     try:
         r = http_get("https://projecteuler.net/archives")
         soup = BeautifulSoup(r.text, "lxml")
+
+        # 1) собрать ВСЕ номера страниц
         pages = {1}
-        for a in soup.select('a[href*="archives"]'):
+        for a in soup.find_all("a"):
             href = a.get("href", "")
-            m = re.search(r"[?;]page=(\d+)", href)
+            m = re.search(r"(?:[?;&]|^)page=(\d+)", href)
             if m:
                 pages.add(int(m.group(1)))
+            t = (a.text or "").strip()
+            if t.isdigit():
+                pages.add(int(t))
+
         last = max(pages)
 
-        r2 = http_get(f"https://projecteuler.net/archives?page={last}")
-        soup2 = BeautifulSoup(r2.text, "lxml")
-        ids = []
-        for a in soup2.select('a[href*="problem="]'):
-            m = re.search(r"problem=(\d+)", a.get("href", ""))
-            if m:
-                ids.append(int(m.group(1)))
-        return max(ids) if ids else None
+        def max_id_on(page: int) -> int:
+            ids: list[int] = []
+            for sep in ("?", ";"):
+                try:
+                    r2 = http_get(f"https://projecteuler.net/archives{sep}page={page}")
+                except Exception:
+                    continue
+                s2 = BeautifulSoup(r2.text, "lxml")
+                for a in s2.find_all("a"):
+                    href = a.get("href", "")
+                    m = re.search(r"problem=(\d+)", href)
+                    if m:
+                        ids.append(int(m.group(1)))
+            return max(ids) if ids else -1
+
+        # 2) попытаться сразу по последней странице
+        mx = max_id_on(last)
+        if mx != -1:
+            return mx
+
+        # 3) фоллбек: шагать назад, пока не найдём хоть один id
+        for k in range(last - 1, 0, -1):
+            mx = max_id_on(k)
+            if mx != -1:
+                return mx
+
+        return None
     except Exception:
         return None
+
 
 def progress_bar(solved: int, total: int, width: int = 30) -> str:
     pct = (solved / total) if total else 0.0
