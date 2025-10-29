@@ -1,8 +1,8 @@
 # Project Euler — my solutions
-![progress](https://img.shields.io/badge/Project%20Euler-19%2F50-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-19%2F956-blue)
 
-**Progress:** 19/50 (38.00%)  
-`███████████░░░░░░░░░░░░░░░░░░░`
+**Progress:** 19/956 (1.99%)  
+`█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 ## 001-100
 
