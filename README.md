@@ -1,7 +1,7 @@
 # Project Euler — my solutions
-![progress](https://img.shields.io/badge/Project%20Euler-19%2F956-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-21%2F956-blue)
 
-**Progress:** 19/956 (1.99%)  
+**Progress:** 21/956 (2.20%)  
 `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 ## 001-100
@@ -26,5 +26,7 @@
 | 16 | Power Digit Sum | [001-100/p16](001-100/p16/) |
 | 17 | Number Letter Counts | [001-100/p17](001-100/p17/) |
 | 18 | Maximum Path Sum I | [001-100/p18](001-100/p18/) |
+| 19 | Counting Sundays | [001-100/p19](001-100/p19/) |
+| 20 | Factorial Digit Sum | [001-100/p20](001-100/p20/) |
 | 67 | Maximum Path Sum II | [001-100/p67](001-100/p67/) |
 
