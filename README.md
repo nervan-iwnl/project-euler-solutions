@@ -1,7 +1,7 @@
 # Project Euler — my solutions
-![progress](https://img.shields.io/badge/Project%20Euler-21%2F956-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-22%2F956-blue)
 
-**Progress:** 21/956 (2.20%)  
+**Progress:** 22/956 (2.30%)  
 `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 ## 001-100
@@ -28,5 +28,6 @@
 | 18 | Maximum Path Sum I | [001-100/p18](001-100/p18/) |
 | 19 | Counting Sundays | [001-100/p19](001-100/p19/) |
 | 20 | Factorial Digit Sum | [001-100/p20](001-100/p20/) |
+| 21 | Amicable Numbers | [001-100/p21](001-100/p21/) |
 | 67 | Maximum Path Sum II | [001-100/p67](001-100/p67/) |
 
