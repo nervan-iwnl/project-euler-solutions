@@ -1,7 +1,7 @@
 # Project Euler — my solutions
-![progress](https://img.shields.io/badge/Project%20Euler-23%2F957-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-25%2F957-blue)
 
-**Progress:** 23/957 (2.40%)  
+**Progress:** 25/957 (2.61%)  
 `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 ## 001-100
@@ -30,5 +30,7 @@
 | 20 | Factorial Digit Sum | [001-100/p20](001-100/p20/) |
 | 21 | Amicable Numbers | [001-100/p21](001-100/p21/) |
 | 22 | Names Scores | [001-100/p22](001-100/p22/) |
+| 23 | Non-Abundant Sums | [001-100/p23](001-100/p23/) |
+| 24 | Lexicographic Permutations | [001-100/p24](001-100/p24/) |
 | 67 | Maximum Path Sum II | [001-100/p67](001-100/p67/) |
 
