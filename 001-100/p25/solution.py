@@ -6,4 +6,3 @@ while len(str(b)) < 1000:
     idx += 1
 
 print(idx)
-
