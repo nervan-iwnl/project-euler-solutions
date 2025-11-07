@@ -1,7 +1,7 @@
 # Project Euler — my solutions
-![progress](https://img.shields.io/badge/Project%20Euler-25%2F957-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-26%2F957-blue)
 
-**Progress:** 25/957 (2.61%)  
+**Progress:** 26/957 (2.72%)  
 `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 ## 001-100
@@ -32,5 +32,6 @@
 | 22 | Names Scores | [001-100/p22](001-100/p22/) |
 | 23 | Non-Abundant Sums | [001-100/p23](001-100/p23/) |
 | 24 | Lexicographic Permutations | [001-100/p24](001-100/p24/) |
+| 25 | $1000$-digit Fibonacci Number | [001-100/p25](001-100/p25/) |
 | 67 | Maximum Path Sum II | [001-100/p67](001-100/p67/) |
 
