@@ -1,7 +1,7 @@
 # Project Euler — my solutions
-![progress](https://img.shields.io/badge/Project%20Euler-26%2F957-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-31%2F957-blue)
 
-**Progress:** 26/957 (2.72%)  
+**Progress:** 31/957 (3.24%)  
 `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 ## 001-100
@@ -33,5 +33,10 @@
 | 23 | Non-Abundant Sums | [001-100/p23](001-100/p23/) |
 | 24 | Lexicographic Permutations | [001-100/p24](001-100/p24/) |
 | 25 | $1000$-digit Fibonacci Number | [001-100/p25](001-100/p25/) |
+| 26 | Reciprocal Cycles | [001-100/p26](001-100/p26/) |
+| 27 | Quadratic Primes | [001-100/p27](001-100/p27/) |
+| 28 | Number Spiral Diagonals | [001-100/p28](001-100/p28/) |
+| 29 | Distinct Powers | [001-100/p29](001-100/p29/) |
+| 30 | Digit Fifth Powers | [001-100/p30](001-100/p30/) |
 | 67 | Maximum Path Sum II | [001-100/p67](001-100/p67/) |
 
