@@ -1,7 +1,7 @@
 # Project Euler — my solutions
-![progress](https://img.shields.io/badge/Project%20Euler-31%2F957-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-31%2F958-blue)
 
-**Progress:** 31/957 (3.24%)  
+**Progress:** 31/958 (3.24%)  
 `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 ## 001-100
