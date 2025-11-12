@@ -1,7 +1,7 @@
 # Project Euler — my solutions
-![progress](https://img.shields.io/badge/Project%20Euler-31%2F958-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-35%2F958-blue)
 
-**Progress:** 31/958 (3.24%)  
+**Progress:** 35/958 (3.65%)  
 `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 ## 001-100
@@ -38,5 +38,9 @@
 | 28 | Number Spiral Diagonals | [001-100/p28](001-100/p28/) |
 | 29 | Distinct Powers | [001-100/p29](001-100/p29/) |
 | 30 | Digit Fifth Powers | [001-100/p30](001-100/p30/) |
+| 31 | Coin Sums | [001-100/p31](001-100/p31/) |
+| 32 | Pandigital Products | [001-100/p32](001-100/p32/) |
+| 33 | Digit Cancelling Fractions | [001-100/p33](001-100/p33/) |
+| 34 | Digit Factorials | [001-100/p34](001-100/p34/) |
 | 67 | Maximum Path Sum II | [001-100/p67](001-100/p67/) |
 
