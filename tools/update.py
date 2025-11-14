@@ -75,7 +75,7 @@ SOLUTION_PREFIX = "solution."
 PUBLISH_STATEMENTS: bool = os.getenv("PUBLISH_STATEMENTS", "false").lower() in {"1", "true", "yes", "on"}
 
 # Создавать ли README.md внутри каждой корзины с мини-индексом
-GENERATE_BUCKET_README: bool = os.getenv("GENERATE_BUCKET_README", "true").lower() in {"1", "true", "yes", "on"}
+GENERATE_BUCKET_README: bool = os.getenv("GENERATE_BUCKET_README", "false").lower() in {"1", "true", "yes", "on"}
 
 # Сетевые параметры (для вытягивания заголовков/условий и определения общего числа задач)
 REQUEST_TIMEOUT: int = int(os.getenv("REQUEST_TIMEOUT", "25"))
@@ -303,68 +303,59 @@ def progress_bar(solved: int, total: int, width: int = 30) -> str:
 
 def write_root_readme(solved_map: Dict[int, Path], titles: Dict[int, str], total: Optional[int]) -> None:
     """
-    Генерирует корневой README.md в виде 10×10 таблиц для каждой «сотни» (корзины).
-    В каждой ячейке — номер задачи; решённые выделены **жирным** и являются ссылками
-    на каталог задачи + помечены ✅. Нерешённые — просто номер.
+    Генерирует корневой README.md с компактными HTML-таблицами 10×10
+    для каждой «сотни» задач. Решённые: жирный номер-ссылка (001), нерешённые: серый номер.
+    Без чеков и служебных заголовков — максимально узко, без горизонтального скролла.
     """
     solved_nums = sorted(solved_map.keys())
-    # Если нет вообще ни одной решённой — покажем пустой прогресс и 001–100 как стартовую сетку
     total_all = (total or (max(solved_nums) if solved_nums else BUCKET_SIZE))
     solved_count = len(solved_nums)
     pct = (solved_count / total_all * 100) if total_all else 0.0
-    bar = progress_bar(solved_count, total_all, width=30)
-    badge = f"![progress](https://img.shields.io/badge/Project%20Euler-{solved_count}%2F{total_all}-blue)"
 
-    # Быстрый доступ: множество решённых номеров
+    badge = f"![progress](https://img.shields.io/badge/Project%20Euler-{solved_count}%2F{total_all}-blue)"
+    bar = progress_bar(solved_count, total_all, width=30)
+
     solved_set = set(solved_nums)
 
-    def cell_for(n: int) -> str:
-        """
-        Возвращает содержимое ячейки для задачи n.
-        Если решена — **[n](path)**✅, иначе — просто n.
-        """
+    def cell_html(n: int) -> str:
+        label = f"{n:03d}"
         if n in solved_set:
             rel = solved_map[n].relative_to(ROOT).as_posix() + "/"
-            return f"**[{n}]({rel})**✅"
-        return f"{n}"
+            return f'<td align="center"><a href="{rel}"><strong>{label}</strong></a></td>'
+        return f'<td align="center"><span>{label}</span></td>'
 
-    lines: List[str] = []
-    lines.append("# Project Euler — my solutions\n\n")
-    lines.append(f"{badge}\n\n")
-    lines.append(f"**Progress:** {solved_count}/{total_all} ({pct:.2f}%)  \n")
-    lines.append(f"`{bar}`\n\n")
-    lines.append("> Legend: **bold+link✅** — solved • plain number — not yet\n\n")
+    parts = []
+    parts.append("# Project Euler — my solutions\n\n")
+    parts.append(f"{badge}\n\n")
+    parts.append(f"**Progress:** {solved_count}/{total_all} ({pct:.2f}%)  \n")
+    parts.append(f"`{bar}`\n\n")
+    parts.append("<sub>Bold link = solved • Plain = not yet</sub>\n\n")
 
-    # Идём по корзинам от 1 до total_all, шаг по BUCKET_SIZE
-    start_num = 1
-    while start_num <= total_all:
-        end_num = min(start_num + BUCKET_SIZE - 1, total_all)
-        bucket_label = f"{start_num:03d}-{end_num:03d}"
-        lines.append(f"## {bucket_label}\n\n")
+    # По всем корзинам: 1..total_all, шаг BUCKET_SIZE
+    start = 1
+    while start <= total_all:
+        end = min(start + BUCKET_SIZE - 1, total_all)
+        solved_in_bucket = sum(1 for n in range(start, end + 1) if n in solved_set)
+        parts.append(f"## {start:03d}-{end:03d}  \n")
+        parts.append(f"<sub>{solved_in_bucket}/{end - start + 1} solved</sub>\n\n")
 
-        # 10×10 таблица: 10 столбцов, 10 строк
-        cols = 10
-        lines.append("| " + " | ".join([str(i) for i in range(1, cols + 1)]) + " |\n")
-        lines.append("|" + "|".join([":--:" for _ in range(cols)]) + "|\n")
-
-        # Заполняем строки
-        cur = start_num
-        for r in range(10):
-            row_cells: List[str] = []
-            for c in range(10):
-                if cur <= end_num:
-                    row_cells.append(cell_for(cur))
+        # Таблица 10×10 без заголовков
+        parts.append("<table><tbody>\n")
+        cur = start
+        for _ in range(10):
+            parts.append("<tr>")
+            for _ in range(10):
+                if cur <= end:
+                    parts.append(cell_html(cur))
                 else:
-                    row_cells.append(" ")
+                    parts.append('<td align="center">&nbsp;</td>')
                 cur += 1
-            lines.append("| " + " | ".join(row_cells) + " |\n")
+            parts.append("</tr>\n")
+        parts.append("</tbody></table>\n\n")
+        start = end + 1
 
-        lines.append("\n")
-        start_num = end_num + 1
-
-    (ROOT / "README.md").write_text("".join(lines), encoding="utf-8")
-
-
+    (ROOT / "README.md").write_text("".join(parts), encoding="utf-8")
+    
 def write_bucket_index(bucket: str, nums: List[int]) -> None:
     """
     Создаёт/обновляет README.md внутри корзины с мини-индексом задач.
@@ -444,6 +435,27 @@ def ensure_in_bucket(n: int, current_dir: Path) -> Path:
     return target_dir
 
 
+def cleanup_bucket_readmes() -> None:
+    """
+    Удаляет README.md (и подобные) внутри корзин вида 001-100, 101-200, ...
+    Корневой README содержит всю навигацию — локальные README в корзинах не нужны.
+    """
+    try:
+        patterns = {"README.md", "readme.md", "Readme.md", "index.md"}
+        for d in ROOT.iterdir():
+            if d.is_dir() and re.fullmatch(r"\d{3}-\d{3}", d.name):
+                for name in patterns:
+                    fp = d / name
+                    if fp.exists():
+                        try:
+                            fp.unlink()
+                        except Exception:
+                            pass
+    except Exception:
+        # Никогда не валимся из-за косметики
+        pass
+
+
 # === Точка входа ===
 
 def main() -> None:
@@ -477,6 +489,9 @@ def main() -> None:
             buckets.setdefault(b, []).append(n)
         for b, lst in buckets.items():
             write_bucket_index(b, lst)
+
+    # На всякий случай чистим README в корзинах
+    cleanup_bucket_readmes()
 
 
 if __name__ == "__main__":
