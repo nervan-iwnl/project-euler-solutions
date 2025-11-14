@@ -72,7 +72,7 @@ SOLUTION_FILENAMES = {
 SOLUTION_PREFIX = "solution."
 
 # Публиковать ли текст условий (по умолчанию НЕТ, чтобы не светить контент публично).
-PUBLISH_STATEMENTS: bool = os.getenv("PUBLISH_STATEMENTS", "false").lower() in {"1", "true", "yes", "on"}
+PUBLISH_STATEMENTS: bool = os.getenv("PUBLISH_STATEMENTS", "true").lower() in {"1", "true", "yes", "on"}
 
 # Создавать ли README.md внутри каждой корзины с мини-индексом
 GENERATE_BUCKET_README: bool = os.getenv("GENERATE_BUCKET_README", "false").lower() in {"1", "true", "yes", "on"}
