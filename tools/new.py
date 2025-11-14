@@ -1,15 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-"""
-Создаёт каркас для новой задачи:
-  bucket/pN/solution.py (если нет)
-и запускает tools/update.py, чтобы подтянуть README и обновить корневой прогресс.
-
-Пример:
-  python tools/new.py 42
-"""
-
 from __future__ import annotations
 import sys
 from pathlib import Path
@@ -17,11 +7,15 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 BUCKET_SIZE = 100
+PROBLEM_PAD = 3  # поставь 4, если хочешь p0001
 
 def bucket_name(n: int) -> str:
     start = ((n - 1) // BUCKET_SIZE) * BUCKET_SIZE + 1
     end = start + BUCKET_SIZE - 1
     return f"{start:03d}-{end:03d}"
+
+def prob_dir_name(n: int) -> str:
+    return f"p{n:0{PROBLEM_PAD}d}"
 
 TEMPLATE = """def solve():
     # write your solution here
@@ -41,7 +35,7 @@ def main():
         sys.exit(2)
 
     b = bucket_name(n)
-    prob_dir = ROOT / b / f"p{n}"
+    prob_dir = ROOT / b / prob_dir_name(n)   # <— тут важное изменение
     prob_dir.mkdir(parents=True, exist_ok=True)
 
     sol = prob_dir / "solution.py"

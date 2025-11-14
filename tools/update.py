@@ -1,33 +1,50 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
 """
-Апдейтер репозитория с решениями Project Euler c «корзинами» по 100 задач.
+update.py — «апдейтер» репозитория с решениями Project Euler
+с иерархией «корзин» (buckets) и нормализацией имён задач.
 
-Что делает:
-  1) Рекурсивно ищет папки задач вида p{N} (где N — число) в любом месте.
-  2) Считает задачу решенной, если внутри есть solution.* или main.* (конфигурируемо).
-  3) Проверяет, что каждая задача лежит в правильной «корзине»:
-       001-100, 101-200, 201-300, ...
-     Если нет — ПЕРЕНОСИТ (git позже увидит mv).
-  4) Создает pN/README.md, если его ещё нет.
-     По умолчанию ТЕКСТ УСЛОВИЙ НЕ ПУБЛИКУЕТСЯ (только ссылка).
-     Включить публикацию можно env-переменной PUBLISH_STATEMENTS=true.
-  5) Пересобирает корневой README.md: прогресс, прогресс-бар, секции по корзинам.
-  6) Определяет «сколько всего задач» через /archives на projecteuler.net (с ретраями).
-     Если сайт не доступен — fallback: максимум из решённых.
+Зачем нужен:
+  - Привести структуру каталога к стабильному виду, который красиво отображается на GitHub:
+      001-100/p001/, 001-100/p002/, ..., 101-200/p123/ и т.д.
+    (GitHub сортирует ЛЕКСИКОГРАФИЧЕСКИ, поэтому p1, p10, p2 выглядят криво —
+     лечится нулевым паддингом p001, p010, p002…).
+  - Поддерживать README-файлы:
+      * pNNN/README.md — заголовок + (опционально) текст условия или только ссылка.
+      * README.md в корне — прогресс, прогресс-бар, списки задач по корзинам.
+      * (опционально) README.md внутри каждой корзины с мини-индексом.
+  - Аккуратно переносить/переименовывать каталоги задач в правильные «корзины»
+    и канонические имена без потери содержимого (git увидит mv/rename).
+  - Узнавать «сколько всего задач» на projecteuler.net/archives (с ретраями).
 
-Зависимости: requests, beautifulsoup4, lxml, html2text
+Основные принципы:
+  - Имена задач — «канонические»: p{n:0{PROBLEM_PAD}d} (по умолчанию p001).
+  - Корзины фиксированного размера (по умолчанию 100): 001-100, 101-200, ...
+  - «Решённой» считаем задачу, если внутри pNNN/ найден хоть один файл из набора
+    SOLUTION_FILENAMES или любой файл, начинающийся на "solution." (например, solution.kt).
+  - Текст условий по умолчанию не публикуется (чтобы не светить контент). Можно включить
+    через переменную окружения PUBLISH_STATEMENTS=true (см. workflow).
+  - Сети бывают нестабильны → http_get() с ретраями и backoff.
+
+Зависимости (устанавливаются через requirements.txt):
+    requests, beautifulsoup4, lxml, html2text
+
+Автору будущего:
+  - Менять размер «корзины» — BUCKET_SIZE.
+  - Менять паддинг имён задач — PROBLEM_PAD.
+  - Добавлять новые расширения решений — SOLUTION_FILENAMES/SOLUTION_PREFIX.
+  - Включить/выключить публикацию условий — PUBLISH_STATEMENTS (env).
+  - Генерацию README внутри корзин можно отключить флагом GENERATE_BUCKET_README (env).
 """
 
 from __future__ import annotations
+
 import os
 import re
 import time
 import shutil
-import math
 from pathlib import Path
-from typing import Optional, Iterable, Dict, List, Tuple
+from typing import Optional, Dict, List, Tuple
 
 import requests
 from bs4 import BeautifulSoup
@@ -35,62 +52,104 @@ from html2text import HTML2Text
 
 # === Конфиг ===
 
-ROOT = Path(__file__).resolve().parents[1]
-BUCKET_SIZE = 100  # размер корзины
-# Какие имена файлов считаем «есть решение»
+# Корень репозитория (скрипт лежит в tools/, значит ROOT = на уровень выше)
+ROOT: Path = Path(__file__).resolve().parents[1]
+
+# Размер «корзины» (001-100, 101-200, ...)
+BUCKET_SIZE: int = int(os.getenv("BUCKET_SIZE", "100"))
+
+# Паддинг для имён каталогов задач: p001, p042, p840 (можно поставить 4 → p0001 и т.д.)
+PROBLEM_PAD: int = int(os.getenv("PROBLEM_PAD", "3"))
+
+# Какие имена файлов считаем «присутствует решение»
 SOLUTION_FILENAMES = {
     "solution.py", "main.py", "solution.ipynb",
     "solution.cpp", "solution.cc", "solution.cxx",
     "solution.rs", "solution.java", "solution.js", "solution.ts",
     "solution.go", "solution.rb", "solution.cs",
 }
-# и/или любой файл, начинающийся на "solution." (например, solution.kt)
+# И/или любой файл, начинающийся на "solution." (например, solution.kt, solution.hs...)
 SOLUTION_PREFIX = "solution."
 
 # Публиковать ли текст условий (по умолчанию НЕТ, чтобы не светить контент публично).
-PUBLISH_STATEMENTS = os.getenv("PUBLISH_STATEMENTS", "false").lower() in {"1", "true", "yes", "on"}
+PUBLISH_STATEMENTS: bool = os.getenv("PUBLISH_STATEMENTS", "false").lower() in {"1", "true", "yes", "on"}
 
-# Параметры скачивания
-REQUEST_TIMEOUT = int(os.getenv("REQUEST_TIMEOUT", "25"))
-MAX_RETRIES = int(os.getenv("MAX_RETRIES", "4"))
-BASE_SLEEP = float(os.getenv("BASE_SLEEP", "1.2"))
+# Создавать ли README.md внутри каждой корзины с мини-индексом
+GENERATE_BUCKET_README: bool = os.getenv("GENERATE_BUCKET_README", "true").lower() in {"1", "true", "yes", "on"}
 
+# Сетевые параметры (для вытягивания заголовков/условий и определения общего числа задач)
+REQUEST_TIMEOUT: int = int(os.getenv("REQUEST_TIMEOUT", "25"))
+MAX_RETRIES: int = int(os.getenv("MAX_RETRIES", "4"))
+BASE_SLEEP: float = float(os.getenv("BASE_SLEEP", "1.2"))
+
+# HTTP-сессия с вменяемым UA
 session = requests.Session()
-session.headers.update({
-    "User-Agent": "PE-Repo-Updater (+github-actions)"
-})
+session.headers.update({"User-Agent": "PE-Repo-Updater (+github-actions)"})
 
-# === Утилиты ===
+
+# === Утилиты для имён и путей ===
 
 def bucket_name(n: int) -> str:
-    """Возвращает имя корзины для задачи n: '001-100', '101-200', ..."""
+    """
+    Имя «корзины» для задачи n: '001-100', '101-200', ...
+    """
     if n < 1:
         raise ValueError("problem number must be >= 1")
     start = ((n - 1) // BUCKET_SIZE) * BUCKET_SIZE + 1
     end = start + BUCKET_SIZE - 1
     return f"{start:03d}-{end:03d}"
 
-_PROB_DIR_RE = re.compile(r"^p(\d+)$")
+
+def prob_dir_name(n: int) -> str:
+    """
+    Каноническое имя каталога задачи с нулевым паддингом: p001, p042, ...
+    Паддинг задаётся PROBLEM_PAD.
+    """
+    return f"p{n:0{PROBLEM_PAD}d}"
+
+
+# Разрешаем старые имена p1, p01, p001 — вытаскиваем число (и нормализуем дальше)
+_PROB_DIR_RE = re.compile(r"^p0*(\d+)$")
+
 
 def is_problem_dir(path: Path) -> Optional[int]:
-    """Если каталог называется p{N}, вернуть N иначе None."""
+    """
+    Если каталог называется p{N} (включая p01, p001), возвращает N, иначе None.
+    """
     m = _PROB_DIR_RE.fullmatch(path.name)
     if not m:
         return None
-    return int(m.group(1))
+    try:
+        return int(m.group(1))
+    except ValueError:
+        return None
+
 
 def has_solution_files(dir_path: Path) -> bool:
-    """Есть ли в каталоге файлы, которые считаем решением."""
-    for p in dir_path.iterdir():
-        if not p.is_file():
-            continue
-        name = p.name
-        if name in SOLUTION_FILENAMES or name.startswith(SOLUTION_PREFIX):
-            return True
-    return False
+    """
+    Считаем задачу «решённой», если в каталоге есть хотя бы один файл из SOLUTION_FILENAMES
+    или файл, начинающийся на SOLUTION_PREFIX (например, solution.kt).
+    """
+    try:
+        for p in dir_path.iterdir():
+            if not p.is_file():
+                continue
+            name = p.name
+            if name in SOLUTION_FILENAMES or name.startswith(SOLUTION_PREFIX):
+                return True
+        return False
+    except FileNotFoundError:
+        # Каталог могли переместить во время работы (маловероятно локально)
+        return False
+
+
+# === HTTP и парсинг страниц Project Euler ===
 
 def http_get(url: str) -> requests.Response:
-    """GET с повторами и экспоненциальной задержкой."""
+    """
+    GET с повторами и экспоненциальной «лестницей» времени ожидания.
+    Возвращает Response со статусом 200 или поднимает исключение.
+    """
     last_exc = None
     for i in range(MAX_RETRIES):
         try:
@@ -99,13 +158,17 @@ def http_get(url: str) -> requests.Response:
                 return r
         except requests.RequestException as e:
             last_exc = e
+        # backoff: 1.2^i, 1.44, 1.728, ...
         time.sleep(BASE_SLEEP ** i)
     if last_exc:
         raise last_exc
     raise RuntimeError(f"GET failed: {url}")
 
+
 def html_to_md(elem) -> str:
-    """Грубая конвертация HTML -> Markdown (без жёстких переносов строк)."""
+    """
+    Грубая конвертация HTML → Markdown без жёстких переносов.
+    """
     if elem is None:
         return ""
     h = HTML2Text()
@@ -114,17 +177,19 @@ def html_to_md(elem) -> str:
     h.ignore_emphasis = False
     return h.handle(str(elem)).strip()
 
-def fetch_problem_md(n: int) -> tuple[str, str]:
-    """Возвращает (markdown, title) задачи n, вытягивая со страницы задачи."""
+
+def fetch_problem_md(n: int) -> Tuple[str, str]:
+    """
+    Вытягивает страницу задачи n, возвращает (markdown, title).
+    Если парсинг не удался — бросает исключение, которое обрабатывается выше.
+    """
     url = f"https://projecteuler.net/problem={n}"
     r = http_get(url)
     soup = BeautifulSoup(r.text, "lxml")
 
-    # Заголовок задачи
     title_node = soup.select_one("h2")
     title_text = title_node.get_text(" ", strip=True) if title_node else f"Problem {n}"
 
-    # Контент
     content = soup.select_one("#problem_content") or soup.select_one(".problem_content")
     md_body = html_to_md(content) or "_(content not parsed)_"
 
@@ -133,11 +198,17 @@ def fetch_problem_md(n: int) -> tuple[str, str]:
          f"{md_body}\n"
     return md, title_text
 
+
 def ensure_problem_readme(n: int, prob_dir: Path) -> str:
-    """Создаёт pN/README.md если отсутствует. Возвращает title."""
+    """
+    Гарантирует наличие pNNN/README.md.
+    - Если уже существует — пытается вытащить title из первой строки '###'.
+    - Если публикация условий выключена — кладёт заглушку со ссылкой.
+    - Если публикация включена — тянет страницу и сохраняет.
+    Возвращает заголовок (title) для таблиц в корневом README.
+    """
     readme = prob_dir / "README.md"
     if readme.exists():
-        # вытащим title из первой строки
         try:
             first = readme.read_text(encoding="utf-8", errors="ignore").splitlines()[:1]
             return first[0].lstrip("# ").strip() if first else f"Problem {n}"
@@ -161,18 +232,21 @@ def ensure_problem_readme(n: int, prob_dir: Path) -> str:
     readme.write_text(md, encoding="utf-8")
     return title
 
+
 def fetch_total_problems() -> Optional[int]:
     """
-    Надёжно определяет общее число задач на Project Euler.
-    1) С архива /archives вытаскиваем максимальный номер страницы (из href и текста ссылок).
-    2) Открываем последнюю страницу (и вариант '?page=' и ';page=').
-    3) Берём максимальный problem=ID. Фоллбек — идём назад по страницам.
+    Пытается надёжно определить общее число задач на Project Euler.
+    Алгоритм:
+      1) /archives — собираем номера страниц из href и текстов ссылок.
+      2) Открываем максимальную страницу (пробуем '?page=' и ';page='), берём максимум problem=ID.
+      3) Если не вышло — шагаем назад по страницам, пока не найдём хотя бы один ID.
+      4) Фоллбек: None → в корневом README используем максимум из решённых.
     """
     try:
         r = http_get("https://projecteuler.net/archives")
         soup = BeautifulSoup(r.text, "lxml")
 
-        # 1) собрать ВСЕ номера страниц
+        # собрать возможные номера страниц
         pages = {1}
         for a in soup.find_all("a"):
             href = a.get("href", "")
@@ -183,29 +257,29 @@ def fetch_total_problems() -> Optional[int]:
             if t.isdigit():
                 pages.add(int(t))
 
+        if not pages:
+            pages = {1}
         last = max(pages)
 
         def max_id_on(page: int) -> int:
-            ids: list[int] = []
+            ids: List[int] = []
             for sep in ("?", ";"):
                 try:
                     r2 = http_get(f"https://projecteuler.net/archives{sep}page={page}")
                 except Exception:
                     continue
                 s2 = BeautifulSoup(r2.text, "lxml")
-                for a in s2.find_all("a"):
-                    href = a.get("href", "")
-                    m = re.search(r"problem=(\d+)", href)
-                    if m:
-                        ids.append(int(m.group(1)))
+                for a2 in s2.find_all("a"):
+                    href2 = a2.get("href", "")
+                    m2 = re.search(r"problem=(\d+)", href2)
+                    if m2:
+                        ids.append(int(m2.group(1)))
             return max(ids) if ids else -1
 
-        # 2) попытаться сразу по последней странице
         mx = max_id_on(last)
         if mx != -1:
             return mx
 
-        # 3) фоллбек: шагать назад, пока не найдём хоть один id
         for k in range(last - 1, 0, -1):
             mx = max_id_on(k)
             if mx != -1:
@@ -216,59 +290,102 @@ def fetch_total_problems() -> Optional[int]:
         return None
 
 
+# === Рендер README'ов ===
+
 def progress_bar(solved: int, total: int, width: int = 30) -> str:
+    """
+    Рисует «бар» из █/░ по прогрессу.
+    """
     pct = (solved / total) if total else 0.0
     filled = int(round(width * pct))
     return "█" * filled + "░" * (width - filled)
 
-def write_root_readme(solved_map: Dict[int, Path], titles: Dict[int, str], total: Optional[int]):
-    """Генерирует корневой README с секциями по корзинам."""
+
+def write_root_readme(solved_map: Dict[int, Path], titles: Dict[int, str], total: Optional[int]) -> None:
+    """
+    Генерирует корневой README.md в виде 10×10 таблиц для каждой «сотни» (корзины).
+    В каждой ячейке — номер задачи; решённые выделены **жирным** и являются ссылками
+    на каталог задачи + помечены ✅. Нерешённые — просто номер.
+    """
     solved_nums = sorted(solved_map.keys())
-    if not solved_nums:
-        total = total or 0
-        text = (
-            "# Project Euler — my solutions\n\n"
-            "No solved problems yet.\n"
-        )
-        (ROOT / "README.md").write_text(text, encoding="utf-8")
-        return
-
-    # Группировка по корзинам
-    buckets: Dict[str, List[int]] = {}
-    for n in solved_nums:
-        b = bucket_name(n)
-        buckets.setdefault(b, []).append(n)
-
-    total_all = total or max(solved_nums)
+    # Если нет вообще ни одной решённой — покажем пустой прогресс и 001–100 как стартовую сетку
+    total_all = (total or (max(solved_nums) if solved_nums else BUCKET_SIZE))
     solved_count = len(solved_nums)
     pct = (solved_count / total_all * 100) if total_all else 0.0
     bar = progress_bar(solved_count, total_all, width=30)
     badge = f"![progress](https://img.shields.io/badge/Project%20Euler-{solved_count}%2F{total_all}-blue)"
 
-    lines = []
-    lines.append("# Project Euler — my solutions\n")
+    # Быстрый доступ: множество решённых номеров
+    solved_set = set(solved_nums)
+
+    def cell_for(n: int) -> str:
+        """
+        Возвращает содержимое ячейки для задачи n.
+        Если решена — **[n](path)**✅, иначе — просто n.
+        """
+        if n in solved_set:
+            rel = solved_map[n].relative_to(ROOT).as_posix() + "/"
+            return f"**[{n}]({rel})**✅"
+        return f"{n}"
+
+    lines: List[str] = []
+    lines.append("# Project Euler — my solutions\n\n")
     lines.append(f"{badge}\n\n")
     lines.append(f"**Progress:** {solved_count}/{total_all} ({pct:.2f}%)  \n")
     lines.append(f"`{bar}`\n\n")
+    lines.append("> Legend: **bold+link✅** — solved • plain number — not yet\n\n")
 
-    # Секции по корзинам
-    for b in sorted(buckets.keys(), key=lambda s: int(s.split('-')[0])):
-        lines.append(f"## {b}\n\n")
-        lines.append("| # | title | folder |\n")
-        lines.append("|---:|:------|:------|\n")
-        for n in buckets[b]:
-            prob_dir = solved_map[n]
-            rel = prob_dir.relative_to(ROOT).as_posix()
-            title = titles.get(n, f"Problem {n}")
-            lines.append(f"| {n} | {title} | [{rel}]({rel}/) |\n")
+    # Идём по корзинам от 1 до total_all, шаг по BUCKET_SIZE
+    start_num = 1
+    while start_num <= total_all:
+        end_num = min(start_num + BUCKET_SIZE - 1, total_all)
+        bucket_label = f"{start_num:03d}-{end_num:03d}"
+        lines.append(f"## {bucket_label}\n\n")
+
+        # 10×10 таблица: 10 столбцов, 10 строк
+        cols = 10
+        lines.append("| " + " | ".join([str(i) for i in range(1, cols + 1)]) + " |\n")
+        lines.append("|" + "|".join([":--:" for _ in range(cols)]) + "|\n")
+
+        # Заполняем строки
+        cur = start_num
+        for r in range(10):
+            row_cells: List[str] = []
+            for c in range(10):
+                if cur <= end_num:
+                    row_cells.append(cell_for(cur))
+                else:
+                    row_cells.append(" ")
+                cur += 1
+            lines.append("| " + " | ".join(row_cells) + " |\n")
+
         lines.append("\n")
+        start_num = end_num + 1
 
     (ROOT / "README.md").write_text("".join(lines), encoding="utf-8")
+
+
+def write_bucket_index(bucket: str, nums: List[int]) -> None:
+    """
+    Создаёт/обновляет README.md внутри корзины с мини-индексом задач.
+    Показывает табличку «№ → ссылка на pNNN/».
+    """
+    folder = ROOT / bucket
+    nums = sorted(nums)
+    lines = [f"# {bucket}\n\n", "| # | link |\n", "|---:|:-----|\n"]
+    for n in nums:
+        rel = f"{prob_dir_name(n)}/"
+        lines.append(f"| {n} | [{prob_dir_name(n)}]({rel}) |\n")
+    (folder / "README.md").write_text("".join(lines), encoding="utf-8")
+
+
+# === Сканирование/нормализация каталога ===
 
 def scan_problems() -> Dict[int, Path]:
     """
     Рекурсивно находит каталоги p{N} с решением.
-    Возвращает {N: Path_to_pN}
+    Возвращает {N: Path_to_pN}.
+    Допускает старые имена (p1, p01, p001) — число N извлекается через is_problem_dir().
     """
     found: Dict[int, Path] = {}
     for path in ROOT.rglob("p*"):
@@ -281,62 +398,86 @@ def scan_problems() -> Dict[int, Path]:
             found[n] = path
     return found
 
+
+def merge_dir_contents(src: Path, dst: Path) -> None:
+    """
+    Аккуратно «смержить» содержимое src в dst (без перезаписи существующих файлов).
+    Нужен на случай, когда каталог назначения уже существует.
+    """
+    for item in src.iterdir():
+        target = dst / item.name
+        if target.exists():
+            continue
+        if item.is_dir():
+            shutil.copytree(item, target)
+        else:
+            shutil.copy2(item, target)
+
+
 def ensure_in_bucket(n: int, current_dir: Path) -> Path:
     """
-    Гарантирует, что p{n} лежит в правильной корзине. При необходимости — переносит.
-    Возвращает актуальный путь к p{n}.
+    Гарантирует, что каталог p{n} лежит:
+      1) в правильной корзине (001-100, 101-200, ...);
+      2) имеет каноническое имя p{n:0{PROBLEM_PAD}d}.
+    При необходимости переносит/переименовывает.
+    Возвращает актуальный путь к каталогу pNNN.
     """
-    correct_bucket = bucket_name(n)
-    parent = current_dir.parent
-    if parent.name == correct_bucket:
-        return current_dir
-
-    # перенос
-    target_parent = ROOT / correct_bucket
+    target_parent = ROOT / bucket_name(n)
     target_parent.mkdir(parents=True, exist_ok=True)
-    target_dir = target_parent / current_dir.name
 
-    if target_dir.exists() and target_dir.resolve() == current_dir.resolve():
+    canonical_name = prob_dir_name(n)
+    target_dir = target_parent / canonical_name
+
+    # Уже на месте и имя каноническое
+    if current_dir.parent == target_parent and current_dir.name == canonical_name:
         return current_dir
 
+    # Если каталог назначения существует — аккуратно смержим содержимое и удалим исходник
     if target_dir.exists():
-        # если уже есть каталог назначения — аккуратно смержим содержимое
-        for item in current_dir.iterdir():
-            dst = target_dir / item.name
-            if dst.exists():
-                # не перезаписываем — оставляем как есть
-                continue
-            if item.is_dir():
-                shutil.copytree(item, dst)
-            else:
-                shutil.copy2(item, dst)
-        # удаляем исходник
+        merge_dir_contents(current_dir, target_dir)
         shutil.rmtree(current_dir)
         return target_dir
 
+    # Обычный перенос (может включать переименование)
+    target_dir.parent.mkdir(parents=True, exist_ok=True)
     shutil.move(str(current_dir), str(target_dir))
     return target_dir
 
-def main():
-    # 1) найти решённые
+
+# === Точка входа ===
+
+def main() -> None:
+    # 1) Найти решённые задачи (по файлам solution.* / main.*)
     solved = scan_problems()  # {n: path_to_pN}
 
-    # 2) убедиться, что все в правильных корзинах (и создать корзины)
+    # 2) Привести структуру к канону (корзины + паддинг имён)
     normalized: Dict[int, Path] = {}
     for n, p in sorted(solved.items()):
         new_path = ensure_in_bucket(n, p)
         normalized[n] = new_path
 
-    # 3) подготовить README для задач (если нет)
+    # 3) Сгенерировать pNNN/README.md (заглушки либо с текстом условия)
     titles: Dict[int, str] = {}
     for n, p in sorted(normalized.items()):
         titles[n] = ensure_problem_readme(n, p)
 
-    # 4) сколько всего задач?
+    # 4) Узнать «сколько всего задач» (или взять максимум из решённых как фоллбек)
     total = fetch_total_problems()
+    if total is None and normalized:
+        total = max(normalized.keys())
 
-    # 5) пересобрать корневой README
+    # 5) Пересобрать корневой README
     write_root_readme(normalized, titles, total)
+
+    # 6) (Опционально) README внутри корзин
+    if GENERATE_BUCKET_README and normalized:
+        buckets: Dict[str, List[int]] = {}
+        for n in sorted(normalized.keys()):
+            b = bucket_name(n)
+            buckets.setdefault(b, []).append(n)
+        for b, lst in buckets.items():
+            write_bucket_index(b, lst)
+
 
 if __name__ == "__main__":
     main()
