@@ -1,7 +1,7 @@
 # Project Euler — my solutions
-![progress](https://img.shields.io/badge/Project%20Euler-35%2F958-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-41%2F958-blue)
 
-**Progress:** 35/958 (3.65%)  
+**Progress:** 41/958 (4.28%)  
 `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 ## 001-100
@@ -42,5 +42,11 @@
 | 32 | Pandigital Products | [001-100/p32](001-100/p32/) |
 | 33 | Digit Cancelling Fractions | [001-100/p33](001-100/p33/) |
 | 34 | Digit Factorials | [001-100/p34](001-100/p34/) |
+| 35 | Circular Primes | [001-100/p35](001-100/p35/) |
+| 36 | Double-base Palindromes | [001-100/p36](001-100/p36/) |
+| 37 | Truncatable Primes | [001-100/p37](001-100/p37/) |
+| 38 | Pandigital Multiples | [001-100/p38](001-100/p38/) |
+| 39 | Integer Right Triangles | [001-100/p39](001-100/p39/) |
+| 40 | Champernowne's Constant | [001-100/p40](001-100/p40/) |
 | 67 | Maximum Path Sum II | [001-100/p67](001-100/p67/) |
 
