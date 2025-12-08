@@ -1,8 +1,8 @@
 # Project Euler — my solutions
 
-![progress](https://img.shields.io/badge/Project%20Euler-68%2F962-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-68%2F963-blue)
 
-**Progress:** 68/962 (7.07%)  
+**Progress:** 68/963 (7.06%)  
 `██░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 <sub>Bold link = solved • Plain = not yet</sub>
@@ -151,8 +151,8 @@
 <tr><td align="center"><span>891</span></td><td align="center"><span>892</span></td><td align="center"><span>893</span></td><td align="center"><span>894</span></td><td align="center"><span>895</span></td><td align="center"><span>896</span></td><td align="center"><span>897</span></td><td align="center"><span>898</span></td><td align="center"><span>899</span></td><td align="center"><span>900</span></td></tr>
 </tbody></table>
 
-## 901-962  
-<sub>0/62 solved</sub>
+## 901-963  
+<sub>0/63 solved</sub>
 
 <table><tbody>
 <tr><td align="center"><span>901</span></td><td align="center"><span>902</span></td><td align="center"><span>903</span></td><td align="center"><span>904</span></td><td align="center"><span>905</span></td><td align="center"><span>906</span></td><td align="center"><span>907</span></td><td align="center"><span>908</span></td><td align="center"><span>909</span></td><td align="center"><span>910</span></td></tr>
@@ -161,7 +161,7 @@
 <tr><td align="center"><span>931</span></td><td align="center"><span>932</span></td><td align="center"><span>933</span></td><td align="center"><span>934</span></td><td align="center"><span>935</span></td><td align="center"><span>936</span></td><td align="center"><span>937</span></td><td align="center"><span>938</span></td><td align="center"><span>939</span></td><td align="center"><span>940</span></td></tr>
 <tr><td align="center"><span>941</span></td><td align="center"><span>942</span></td><td align="center"><span>943</span></td><td align="center"><span>944</span></td><td align="center"><span>945</span></td><td align="center"><span>946</span></td><td align="center"><span>947</span></td><td align="center"><span>948</span></td><td align="center"><span>949</span></td><td align="center"><span>950</span></td></tr>
 <tr><td align="center"><span>951</span></td><td align="center"><span>952</span></td><td align="center"><span>953</span></td><td align="center"><span>954</span></td><td align="center"><span>955</span></td><td align="center"><span>956</span></td><td align="center"><span>957</span></td><td align="center"><span>958</span></td><td align="center"><span>959</span></td><td align="center"><span>960</span></td></tr>
-<tr><td align="center"><span>961</span></td><td align="center"><span>962</span></td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
+<tr><td align="center"><span>961</span></td><td align="center"><span>962</span></td><td align="center"><span>963</span></td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
 <tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
 <tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
 <tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
