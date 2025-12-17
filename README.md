@@ -1,14 +1,8 @@
 # Project Euler — my solutions
 
-<<<<<<< HEAD
-![progress](https://img.shields.io/badge/Project%20Euler-71%2F964-blue)
-
-**Progress:** 71/964 (7.37%)  
-=======
 ![progress](https://img.shields.io/badge/Project%20Euler-74%2F964-blue)
 
 **Progress:** 74/964 (7.68%)  
->>>>>>> 9e911fc (-p073)
 `██░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 <sub>Bold link = solved • Plain = not yet</sub>
