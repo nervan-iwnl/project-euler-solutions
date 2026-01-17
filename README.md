@@ -1,16 +1,9 @@
 # Project Euler — my solutions
 
-<<<<<<< HEAD
-![progress](https://img.shields.io/badge/Project%20Euler-74%2F968-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-76%2F968-blue)
 
-**Progress:** 74/968 (7.64%)  
+**Progress:** 76/968 (7.85%)  
 `██░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
-=======
-![progress](https://img.shields.io/badge/Project%20Euler-76%2F719-blue)
-
-**Progress:** 76/719 (10.57%)  
-`███░░░░░░░░░░░░░░░░░░░░░░░░░░░`
->>>>>>> 5d1932b (-p075)
 
 <sub>Bold link = solved • Plain = not yet</sub>
 
@@ -126,12 +119,11 @@
 <tr><td align="center"><span>691</span></td><td align="center"><span>692</span></td><td align="center"><span>693</span></td><td align="center"><span>694</span></td><td align="center"><span>695</span></td><td align="center"><span>696</span></td><td align="center"><span>697</span></td><td align="center"><span>698</span></td><td align="center"><span>699</span></td><td align="center"><span>700</span></td></tr>
 </tbody></table>
 
-## 701-719  
-<sub>1/19 solved</sub>
+## 701-800  
+<sub>1/100 solved</sub>
 
 <table><tbody>
 <tr><td align="center"><span>701</span></td><td align="center"><span>702</span></td><td align="center"><span>703</span></td><td align="center"><span>704</span></td><td align="center"><span>705</span></td><td align="center"><span>706</span></td><td align="center"><span>707</span></td><td align="center"><span>708</span></td><td align="center"><span>709</span></td><td align="center"><span>710</span></td></tr>
-<<<<<<< HEAD
 <tr><td align="center"><span>711</span></td><td align="center"><span>712</span></td><td align="center"><span>713</span></td><td align="center"><span>714</span></td><td align="center"><span>715</span></td><td align="center"><span>716</span></td><td align="center"><span>717</span></td><td align="center"><span>718</span></td><td align="center"><a href="701-800/p719/"><strong>719</strong></a></td><td align="center"><span>720</span></td></tr>
 <tr><td align="center"><span>721</span></td><td align="center"><span>722</span></td><td align="center"><span>723</span></td><td align="center"><span>724</span></td><td align="center"><span>725</span></td><td align="center"><span>726</span></td><td align="center"><span>727</span></td><td align="center"><span>728</span></td><td align="center"><span>729</span></td><td align="center"><span>730</span></td></tr>
 <tr><td align="center"><span>731</span></td><td align="center"><span>732</span></td><td align="center"><span>733</span></td><td align="center"><span>734</span></td><td align="center"><span>735</span></td><td align="center"><span>736</span></td><td align="center"><span>737</span></td><td align="center"><span>738</span></td><td align="center"><span>739</span></td><td align="center"><span>740</span></td></tr>
@@ -170,14 +162,6 @@
 <tr><td align="center"><span>941</span></td><td align="center"><span>942</span></td><td align="center"><span>943</span></td><td align="center"><span>944</span></td><td align="center"><span>945</span></td><td align="center"><span>946</span></td><td align="center"><span>947</span></td><td align="center"><span>948</span></td><td align="center"><span>949</span></td><td align="center"><span>950</span></td></tr>
 <tr><td align="center"><span>951</span></td><td align="center"><span>952</span></td><td align="center"><span>953</span></td><td align="center"><span>954</span></td><td align="center"><span>955</span></td><td align="center"><span>956</span></td><td align="center"><span>957</span></td><td align="center"><span>958</span></td><td align="center"><span>959</span></td><td align="center"><span>960</span></td></tr>
 <tr><td align="center"><span>961</span></td><td align="center"><span>962</span></td><td align="center"><span>963</span></td><td align="center"><span>964</span></td><td align="center"><span>965</span></td><td align="center"><span>966</span></td><td align="center"><span>967</span></td><td align="center"><span>968</span></td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
-=======
-<tr><td align="center"><span>711</span></td><td align="center"><span>712</span></td><td align="center"><span>713</span></td><td align="center"><span>714</span></td><td align="center"><span>715</span></td><td align="center"><span>716</span></td><td align="center"><span>717</span></td><td align="center"><span>718</span></td><td align="center"><a href="701-800/p719/"><strong>719</strong></a></td><td align="center">&nbsp;</td></tr>
-<tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
-<tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
-<tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
-<tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
-<tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
->>>>>>> 5d1932b (-p075)
 <tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
 <tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
 <tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
