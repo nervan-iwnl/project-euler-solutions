@@ -1,14 +1,14 @@
 # Project Euler — my solutions
 
-![progress](https://img.shields.io/badge/Project%20Euler-81%2F972-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-82%2F973-blue)
 
-**Progress:** 81/972 (8.33%)  
-`██░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
+**Progress:** 82/973 (8.43%)  
+`███░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 <sub>Bold link = solved • Plain = not yet</sub>
 
 ## 001-100  
-<sub>80/100 solved</sub>
+<sub>81/100 solved</sub>
 
 <table><tbody>
 <tr><td align="center"><a href="001-100/p001/"><strong>001</strong></a></td><td align="center"><a href="001-100/p002/"><strong>002</strong></a></td><td align="center"><a href="001-100/p003/"><strong>003</strong></a></td><td align="center"><a href="001-100/p004/"><strong>004</strong></a></td><td align="center"><a href="001-100/p005/"><strong>005</strong></a></td><td align="center"><a href="001-100/p006/"><strong>006</strong></a></td><td align="center"><a href="001-100/p007/"><strong>007</strong></a></td><td align="center"><a href="001-100/p008/"><strong>008</strong></a></td><td align="center"><a href="001-100/p009/"><strong>009</strong></a></td><td align="center"><a href="001-100/p010/"><strong>010</strong></a></td></tr>
@@ -18,7 +18,7 @@
 <tr><td align="center"><a href="001-100/p041/"><strong>041</strong></a></td><td align="center"><a href="001-100/p042/"><strong>042</strong></a></td><td align="center"><a href="001-100/p043/"><strong>043</strong></a></td><td align="center"><a href="001-100/p044/"><strong>044</strong></a></td><td align="center"><a href="001-100/p045/"><strong>045</strong></a></td><td align="center"><a href="001-100/p046/"><strong>046</strong></a></td><td align="center"><a href="001-100/p047/"><strong>047</strong></a></td><td align="center"><a href="001-100/p048/"><strong>048</strong></a></td><td align="center"><a href="001-100/p049/"><strong>049</strong></a></td><td align="center"><a href="001-100/p050/"><strong>050</strong></a></td></tr>
 <tr><td align="center"><a href="001-100/p051/"><strong>051</strong></a></td><td align="center"><a href="001-100/p052/"><strong>052</strong></a></td><td align="center"><a href="001-100/p053/"><strong>053</strong></a></td><td align="center"><a href="001-100/p054/"><strong>054</strong></a></td><td align="center"><a href="001-100/p055/"><strong>055</strong></a></td><td align="center"><a href="001-100/p056/"><strong>056</strong></a></td><td align="center"><a href="001-100/p057/"><strong>057</strong></a></td><td align="center"><a href="001-100/p058/"><strong>058</strong></a></td><td align="center"><a href="001-100/p059/"><strong>059</strong></a></td><td align="center"><a href="001-100/p060/"><strong>060</strong></a></td></tr>
 <tr><td align="center"><a href="001-100/p061/"><strong>061</strong></a></td><td align="center"><a href="001-100/p062/"><strong>062</strong></a></td><td align="center"><a href="001-100/p063/"><strong>063</strong></a></td><td align="center"><a href="001-100/p064/"><strong>064</strong></a></td><td align="center"><a href="001-100/p065/"><strong>065</strong></a></td><td align="center"><a href="001-100/p066/"><strong>066</strong></a></td><td align="center"><a href="001-100/p067/"><strong>067</strong></a></td><td align="center"><a href="001-100/p068/"><strong>068</strong></a></td><td align="center"><a href="001-100/p069/"><strong>069</strong></a></td><td align="center"><a href="001-100/p070/"><strong>070</strong></a></td></tr>
-<tr><td align="center"><a href="001-100/p071/"><strong>071</strong></a></td><td align="center"><a href="001-100/p072/"><strong>072</strong></a></td><td align="center"><a href="001-100/p073/"><strong>073</strong></a></td><td align="center"><a href="001-100/p074/"><strong>074</strong></a></td><td align="center"><a href="001-100/p075/"><strong>075</strong></a></td><td align="center"><a href="001-100/p076/"><strong>076</strong></a></td><td align="center"><a href="001-100/p077/"><strong>077</strong></a></td><td align="center"><a href="001-100/p078/"><strong>078</strong></a></td><td align="center"><span>079</span></td><td align="center"><span>080</span></td></tr>
+<tr><td align="center"><a href="001-100/p071/"><strong>071</strong></a></td><td align="center"><a href="001-100/p072/"><strong>072</strong></a></td><td align="center"><a href="001-100/p073/"><strong>073</strong></a></td><td align="center"><a href="001-100/p074/"><strong>074</strong></a></td><td align="center"><a href="001-100/p075/"><strong>075</strong></a></td><td align="center"><a href="001-100/p076/"><strong>076</strong></a></td><td align="center"><a href="001-100/p077/"><strong>077</strong></a></td><td align="center"><a href="001-100/p078/"><strong>078</strong></a></td><td align="center"><a href="001-100/p079/"><strong>079</strong></a></td><td align="center"><span>080</span></td></tr>
 <tr><td align="center"><span>081</span></td><td align="center"><span>082</span></td><td align="center"><span>083</span></td><td align="center"><span>084</span></td><td align="center"><span>085</span></td><td align="center"><span>086</span></td><td align="center"><span>087</span></td><td align="center"><span>088</span></td><td align="center"><span>089</span></td><td align="center"><span>090</span></td></tr>
 <tr><td align="center"><span>091</span></td><td align="center"><a href="001-100/p092/"><strong>092</strong></a></td><td align="center"><span>093</span></td><td align="center"><span>094</span></td><td align="center"><span>095</span></td><td align="center"><span>096</span></td><td align="center"><a href="001-100/p097/"><strong>097</strong></a></td><td align="center"><span>098</span></td><td align="center"><span>099</span></td><td align="center"><span>100</span></td></tr>
 </tbody></table>
@@ -151,8 +151,8 @@
 <tr><td align="center"><span>891</span></td><td align="center"><span>892</span></td><td align="center"><span>893</span></td><td align="center"><span>894</span></td><td align="center"><span>895</span></td><td align="center"><span>896</span></td><td align="center"><span>897</span></td><td align="center"><span>898</span></td><td align="center"><span>899</span></td><td align="center"><span>900</span></td></tr>
 </tbody></table>
 
-## 901-972  
-<sub>0/72 solved</sub>
+## 901-973  
+<sub>0/73 solved</sub>
 
 <table><tbody>
 <tr><td align="center"><span>901</span></td><td align="center"><span>902</span></td><td align="center"><span>903</span></td><td align="center"><span>904</span></td><td align="center"><span>905</span></td><td align="center"><span>906</span></td><td align="center"><span>907</span></td><td align="center"><span>908</span></td><td align="center"><span>909</span></td><td align="center"><span>910</span></td></tr>
@@ -162,7 +162,7 @@
 <tr><td align="center"><span>941</span></td><td align="center"><span>942</span></td><td align="center"><span>943</span></td><td align="center"><span>944</span></td><td align="center"><span>945</span></td><td align="center"><span>946</span></td><td align="center"><span>947</span></td><td align="center"><span>948</span></td><td align="center"><span>949</span></td><td align="center"><span>950</span></td></tr>
 <tr><td align="center"><span>951</span></td><td align="center"><span>952</span></td><td align="center"><span>953</span></td><td align="center"><span>954</span></td><td align="center"><span>955</span></td><td align="center"><span>956</span></td><td align="center"><span>957</span></td><td align="center"><span>958</span></td><td align="center"><span>959</span></td><td align="center"><span>960</span></td></tr>
 <tr><td align="center"><span>961</span></td><td align="center"><span>962</span></td><td align="center"><span>963</span></td><td align="center"><span>964</span></td><td align="center"><span>965</span></td><td align="center"><span>966</span></td><td align="center"><span>967</span></td><td align="center"><span>968</span></td><td align="center"><span>969</span></td><td align="center"><span>970</span></td></tr>
-<tr><td align="center"><span>971</span></td><td align="center"><span>972</span></td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
+<tr><td align="center"><span>971</span></td><td align="center"><span>972</span></td><td align="center"><span>973</span></td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
 <tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
 <tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
 </tbody></table>
