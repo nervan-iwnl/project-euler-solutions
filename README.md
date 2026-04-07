@@ -1,14 +1,14 @@
 # Project Euler — my solutions
 
-![progress](https://img.shields.io/badge/Project%20Euler-96%2F981-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-97%2F981-blue)
 
-**Progress:** 96/981 (9.79%)  
+**Progress:** 97/981 (9.89%)  
 `███░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 <sub>Bold link = solved • Plain = not yet</sub>
 
 ## 001-100  
-<sub>93/100 solved</sub>
+<sub>94/100 solved</sub>
 
 <table><tbody>
 <tr><td align="center"><a href="001-100/p001/"><strong>001</strong></a></td><td align="center"><a href="001-100/p002/"><strong>002</strong></a></td><td align="center"><a href="001-100/p003/"><strong>003</strong></a></td><td align="center"><a href="001-100/p004/"><strong>004</strong></a></td><td align="center"><a href="001-100/p005/"><strong>005</strong></a></td><td align="center"><a href="001-100/p006/"><strong>006</strong></a></td><td align="center"><a href="001-100/p007/"><strong>007</strong></a></td><td align="center"><a href="001-100/p008/"><strong>008</strong></a></td><td align="center"><a href="001-100/p009/"><strong>009</strong></a></td><td align="center"><a href="001-100/p010/"><strong>010</strong></a></td></tr>
@@ -20,7 +20,7 @@
 <tr><td align="center"><a href="001-100/p061/"><strong>061</strong></a></td><td align="center"><a href="001-100/p062/"><strong>062</strong></a></td><td align="center"><a href="001-100/p063/"><strong>063</strong></a></td><td align="center"><a href="001-100/p064/"><strong>064</strong></a></td><td align="center"><a href="001-100/p065/"><strong>065</strong></a></td><td align="center"><a href="001-100/p066/"><strong>066</strong></a></td><td align="center"><a href="001-100/p067/"><strong>067</strong></a></td><td align="center"><a href="001-100/p068/"><strong>068</strong></a></td><td align="center"><a href="001-100/p069/"><strong>069</strong></a></td><td align="center"><a href="001-100/p070/"><strong>070</strong></a></td></tr>
 <tr><td align="center"><a href="001-100/p071/"><strong>071</strong></a></td><td align="center"><a href="001-100/p072/"><strong>072</strong></a></td><td align="center"><a href="001-100/p073/"><strong>073</strong></a></td><td align="center"><a href="001-100/p074/"><strong>074</strong></a></td><td align="center"><a href="001-100/p075/"><strong>075</strong></a></td><td align="center"><a href="001-100/p076/"><strong>076</strong></a></td><td align="center"><a href="001-100/p077/"><strong>077</strong></a></td><td align="center"><a href="001-100/p078/"><strong>078</strong></a></td><td align="center"><a href="001-100/p079/"><strong>079</strong></a></td><td align="center"><a href="001-100/p080/"><strong>080</strong></a></td></tr>
 <tr><td align="center"><a href="001-100/p081/"><strong>081</strong></a></td><td align="center"><a href="001-100/p082/"><strong>082</strong></a></td><td align="center"><a href="001-100/p083/"><strong>083</strong></a></td><td align="center"><a href="001-100/p084/"><strong>084</strong></a></td><td align="center"><a href="001-100/p085/"><strong>085</strong></a></td><td align="center"><span>086</span></td><td align="center"><a href="001-100/p087/"><strong>087</strong></a></td><td align="center"><span>088</span></td><td align="center"><a href="001-100/p089/"><strong>089</strong></a></td><td align="center"><span>090</span></td></tr>
-<tr><td align="center"><span>091</span></td><td align="center"><a href="001-100/p092/"><strong>092</strong></a></td><td align="center"><span>093</span></td><td align="center"><a href="001-100/p094/"><strong>094</strong></a></td><td align="center"><a href="001-100/p095/"><strong>095</strong></a></td><td align="center"><a href="001-100/p096/"><strong>096</strong></a></td><td align="center"><a href="001-100/p097/"><strong>097</strong></a></td><td align="center"><span>098</span></td><td align="center"><a href="001-100/p099/"><strong>099</strong></a></td><td align="center"><span>100</span></td></tr>
+<tr><td align="center"><span>091</span></td><td align="center"><a href="001-100/p092/"><strong>092</strong></a></td><td align="center"><span>093</span></td><td align="center"><a href="001-100/p094/"><strong>094</strong></a></td><td align="center"><a href="001-100/p095/"><strong>095</strong></a></td><td align="center"><a href="001-100/p096/"><strong>096</strong></a></td><td align="center"><a href="001-100/p097/"><strong>097</strong></a></td><td align="center"><a href="001-100/p098/"><strong>098</strong></a></td><td align="center"><a href="001-100/p099/"><strong>099</strong></a></td><td align="center"><span>100</span></td></tr>
 </tbody></table>
 
 ## 101-200  
