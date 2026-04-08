@@ -1,8 +1,8 @@
 # Project Euler — my solutions
 
-![progress](https://img.shields.io/badge/Project%20Euler-103%2F981-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-104%2F981-blue)
 
-**Progress:** 103/981 (10.50%)  
+**Progress:** 104/981 (10.60%)  
 `███░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 <sub>Bold link = solved • Plain = not yet</sub>
@@ -56,10 +56,10 @@
 </tbody></table>
 
 ## 301-400  
-<sub>0/100 solved</sub>
+<sub>1/100 solved</sub>
 
 <table><tbody>
-<tr><td align="center"><span>301</span></td><td align="center"><span>302</span></td><td align="center"><span>303</span></td><td align="center"><span>304</span></td><td align="center"><span>305</span></td><td align="center"><span>306</span></td><td align="center"><span>307</span></td><td align="center"><span>308</span></td><td align="center"><span>309</span></td><td align="center"><span>310</span></td></tr>
+<tr><td align="center"><a href="301-400/p301/"><strong>301</strong></a></td><td align="center"><span>302</span></td><td align="center"><span>303</span></td><td align="center"><span>304</span></td><td align="center"><span>305</span></td><td align="center"><span>306</span></td><td align="center"><span>307</span></td><td align="center"><span>308</span></td><td align="center"><span>309</span></td><td align="center"><span>310</span></td></tr>
 <tr><td align="center"><span>311</span></td><td align="center"><span>312</span></td><td align="center"><span>313</span></td><td align="center"><span>314</span></td><td align="center"><span>315</span></td><td align="center"><span>316</span></td><td align="center"><span>317</span></td><td align="center"><span>318</span></td><td align="center"><span>319</span></td><td align="center"><span>320</span></td></tr>
 <tr><td align="center"><span>321</span></td><td align="center"><span>322</span></td><td align="center"><span>323</span></td><td align="center"><span>324</span></td><td align="center"><span>325</span></td><td align="center"><span>326</span></td><td align="center"><span>327</span></td><td align="center"><span>328</span></td><td align="center"><span>329</span></td><td align="center"><span>330</span></td></tr>
 <tr><td align="center"><span>331</span></td><td align="center"><span>332</span></td><td align="center"><span>333</span></td><td align="center"><span>334</span></td><td align="center"><span>335</span></td><td align="center"><span>336</span></td><td align="center"><span>337</span></td><td align="center"><span>338</span></td><td align="center"><span>339</span></td><td align="center"><span>340</span></td></tr>
