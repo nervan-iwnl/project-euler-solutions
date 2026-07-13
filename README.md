@@ -1,8 +1,8 @@
 # Project Euler — my solutions
 
-![progress](https://img.shields.io/badge/Project%20Euler-104%2F995-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-104%2F997-blue)
 
-**Progress:** 104/995 (10.45%)  
+**Progress:** 104/997 (10.43%)  
 `███░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 <sub>Bold link = solved • Plain = not yet</sub>
@@ -151,8 +151,8 @@
 <tr><td align="center"><span>891</span></td><td align="center"><span>892</span></td><td align="center"><span>893</span></td><td align="center"><span>894</span></td><td align="center"><span>895</span></td><td align="center"><span>896</span></td><td align="center"><span>897</span></td><td align="center"><span>898</span></td><td align="center"><span>899</span></td><td align="center"><span>900</span></td></tr>
 </tbody></table>
 
-## 901-995  
-<sub>1/95 solved</sub>
+## 901-997  
+<sub>1/97 solved</sub>
 
 <table><tbody>
 <tr><td align="center"><span>901</span></td><td align="center"><span>902</span></td><td align="center"><span>903</span></td><td align="center"><span>904</span></td><td align="center"><span>905</span></td><td align="center"><span>906</span></td><td align="center"><span>907</span></td><td align="center"><span>908</span></td><td align="center"><span>909</span></td><td align="center"><span>910</span></td></tr>
@@ -164,6 +164,6 @@
 <tr><td align="center"><span>961</span></td><td align="center"><span>962</span></td><td align="center"><span>963</span></td><td align="center"><span>964</span></td><td align="center"><span>965</span></td><td align="center"><span>966</span></td><td align="center"><span>967</span></td><td align="center"><span>968</span></td><td align="center"><span>969</span></td><td align="center"><span>970</span></td></tr>
 <tr><td align="center"><span>971</span></td><td align="center"><span>972</span></td><td align="center"><span>973</span></td><td align="center"><span>974</span></td><td align="center"><span>975</span></td><td align="center"><span>976</span></td><td align="center"><span>977</span></td><td align="center"><span>978</span></td><td align="center"><span>979</span></td><td align="center"><span>980</span></td></tr>
 <tr><td align="center"><span>981</span></td><td align="center"><span>982</span></td><td align="center"><span>983</span></td><td align="center"><span>984</span></td><td align="center"><span>985</span></td><td align="center"><a href="901-1000/p986/"><strong>986</strong></a></td><td align="center"><span>987</span></td><td align="center"><span>988</span></td><td align="center"><span>989</span></td><td align="center"><span>990</span></td></tr>
-<tr><td align="center"><span>991</span></td><td align="center"><span>992</span></td><td align="center"><span>993</span></td><td align="center"><span>994</span></td><td align="center"><span>995</span></td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
+<tr><td align="center"><span>991</span></td><td align="center"><span>992</span></td><td align="center"><span>993</span></td><td align="center"><span>994</span></td><td align="center"><span>995</span></td><td align="center"><span>996</span></td><td align="center"><span>997</span></td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
 </tbody></table>
 
