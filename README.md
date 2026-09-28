@@ -1,8 +1,8 @@
 # Project Euler — my solutions
 
-![progress](https://img.shields.io/badge/Project%20Euler-104%2F1000-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-104%2F1001-blue)
 
-**Progress:** 104/1000 (10.40%)  
+**Progress:** 104/1001 (10.39%)  
 `███░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 <sub>Bold link = solved • Plain = not yet</sub>
@@ -165,5 +165,21 @@
 <tr><td align="center"><span>971</span></td><td align="center"><span>972</span></td><td align="center"><span>973</span></td><td align="center"><span>974</span></td><td align="center"><span>975</span></td><td align="center"><span>976</span></td><td align="center"><span>977</span></td><td align="center"><span>978</span></td><td align="center"><span>979</span></td><td align="center"><span>980</span></td></tr>
 <tr><td align="center"><span>981</span></td><td align="center"><span>982</span></td><td align="center"><span>983</span></td><td align="center"><span>984</span></td><td align="center"><span>985</span></td><td align="center"><a href="901-1000/p986/"><strong>986</strong></a></td><td align="center"><span>987</span></td><td align="center"><span>988</span></td><td align="center"><span>989</span></td><td align="center"><span>990</span></td></tr>
 <tr><td align="center"><span>991</span></td><td align="center"><span>992</span></td><td align="center"><span>993</span></td><td align="center"><span>994</span></td><td align="center"><span>995</span></td><td align="center"><span>996</span></td><td align="center"><span>997</span></td><td align="center"><span>998</span></td><td align="center"><span>999</span></td><td align="center"><span>1000</span></td></tr>
+</tbody></table>
+
+## 1001-1001  
+<sub>0/1 solved</sub>
+
+<table><tbody>
+<tr><td align="center"><span>1001</span></td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
+<tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
+<tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
+<tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
+<tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
+<tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
+<tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
+<tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
+<tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
+<tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
 </tbody></table>
 
