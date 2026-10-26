@@ -1,8 +1,8 @@
 # Project Euler — my solutions
 
-![progress](https://img.shields.io/badge/Project%20Euler-104%2F1005-blue)
+![progress](https://img.shields.io/badge/Project%20Euler-104%2F1006-blue)
 
-**Progress:** 104/1005 (10.35%)  
+**Progress:** 104/1006 (10.34%)  
 `███░░░░░░░░░░░░░░░░░░░░░░░░░░░`
 
 <sub>Bold link = solved • Plain = not yet</sub>
@@ -167,11 +167,11 @@
 <tr><td align="center"><span>991</span></td><td align="center"><span>992</span></td><td align="center"><span>993</span></td><td align="center"><span>994</span></td><td align="center"><span>995</span></td><td align="center"><span>996</span></td><td align="center"><span>997</span></td><td align="center"><span>998</span></td><td align="center"><span>999</span></td><td align="center"><span>1000</span></td></tr>
 </tbody></table>
 
-## 1001-1005  
-<sub>0/5 solved</sub>
+## 1001-1006  
+<sub>0/6 solved</sub>
 
 <table><tbody>
-<tr><td align="center"><span>1001</span></td><td align="center"><span>1002</span></td><td align="center"><span>1003</span></td><td align="center"><span>1004</span></td><td align="center"><span>1005</span></td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
+<tr><td align="center"><span>1001</span></td><td align="center"><span>1002</span></td><td align="center"><span>1003</span></td><td align="center"><span>1004</span></td><td align="center"><span>1005</span></td><td align="center"><span>1006</span></td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
 <tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
 <tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
 <tr><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td><td align="center">&nbsp;</td></tr>
